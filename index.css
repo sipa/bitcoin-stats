@@ -1,0 +1,43 @@
+/* css shamefully based on P. Michaud's PmWiki (http://www.pmwiki.org) */
+body { margin:0px; background-color:#f7f7f7; font-family:Arial,Helvetica,sans-serif; font-size:11pt; }
+a:link {color: #000000; text-decoration: none; }
+a:visited {color: #000000; text-decoration: none; }
+a:hover {color: #000000; text-decoration: none; }
+#kasbody a:link {color: #000000; text-decoration: none; border-bottom: 1px dotted #000000; }
+#kasbody a:visited {color: #000000; text-decoration: none; border-bottom: 1px dotted #000000; }
+#kasbody a:hover {color: #ff0000; text-decoration: none; border-bottom: 1px solid #ff0000; }
+input {
+   background-repeat: no-repeat;
+      background-position: center center;
+      }
+      #kaslogo { margin-top:2px; margin-left:0px; padding:6px; border-bottom:1px #cccccc solid; font-size:130%; vertical-align:middle; }
+      #kaslogo a:link { text-decoration: none }
+      #kaslogo a:visited { text-decoration: none }
+      #kashead { position:absolute; right:10px; top:12px; font-family:Verdana,sans-serif; font-size:65%; vertical-align:middle; }
+      #kashead input { font-size:85%; }
+      #kasside { width:128px; padding:0px; border-right:1px #cccccc solid; line-height:1.33em; font-size:9.4pt; font-family:Verdana,sans-serif; }
+      #kasside .vspace { margin-top:1.125em; }
+      #kasside a { text-decoration:none; color:black; border-bottom: hidden; }
+      #kasside a:hover { background-color:#ccccff }
+      #kasside ul { list-style:none; padding:0px; margin:0px; }
+      #kasside li { margin:0px; padding: 0px;  border-bottom:1px #cccccc solid; }
+      #kasside li a { display:block; padding:3px; height:100%; width:95.5%; vertical-align:bottom;}
+      .hilight { background-color:#bbbbbb; }
+      #kasbody { padding:10px 10px 10px 10px; background-color:white; font-size:11pt; overflow:auto; vertical-align:top; }
+      #kasbody table { border:0px; border-spacing:0px 1px; margin:0px; }
+      #kasbody th { text-align: left; padding: 1px 4px 1px 4px; }
+      #kasbody td { padding:1px 4px 1px 4px; }
+      .msgsucc  { border:1px #00C71B solid; background-color: #CFFFD5; padding:4px; margin-bottom:10px }
+      .msginfo  { border:1px #4a9eff solid; background-color: #d1e7ff; padding:4px; margin-bottom:10px }
+      .msgwarn  { border:1px #ca0000 solid; background-color: #ff9c9c; padding:4px; margin-bottom:10px }
+      .msgerror { border:2px #623232 solid; background-color: #ff001e; color: #000000; font-weight: bold; padding:4px; margin-bottom:10px }
+      .helpnav  { border-bottom:1px #959595 solid; padding:4px; margin-bottom:10px; font-size:13pt; }
+      .helpnav a { text-decoration:none; }
+      .helpnav a:hover { text-decoration:underline; }
+      .tblhead { background-color: #c8c8c8; }
+      .tbleven { background-color: #e0e0ff; vertical-align:middle; }
+      .tblodd  { background-color: #e0ffe0; vertical-align:middle; }
+      .tblunif { background-color: #e2e2e2; vertical-align:middle; }
+      .code    { background-color: #e0e0f0; border: 1px #aaaaff solid; padding:4px; margin:12px; font-family: monospace; }
+      #kasfoot { padding-left: 10px; padding-bottom:4px; border-top:1px #cccccc solid; font-family:Verdana,sans-serif; font-size:65%; padding-top: 3px; text-align:right; padding-right:10px; }
+      
