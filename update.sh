@@ -72,6 +72,8 @@ gnuplot hashes.gp
 gnuplot powdays-ever.gp
 gnuplot powdays-50k.gp
 
+gnuplot work-ever.gp
+
 tail -n 1 predict3D-10k.dat | cut -d ' ' -f 2 >speed-3D.txt
 
 cp *.png *.html *.css *txt /var/www/
