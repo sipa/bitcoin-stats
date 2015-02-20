@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd /home/pw/bitcoin/stats
 rm *.png
 
@@ -73,6 +74,7 @@ gnuplot powdays-ever.gp
 gnuplot powdays-50k.gp
 
 gnuplot work-ever.gp
+gnuplot work-50k.gp
 
 tail -n 1 predict3D-10k.dat | cut -d ' ' -f 2 >speed-3D.txt
 

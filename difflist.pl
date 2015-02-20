@@ -11,13 +11,14 @@ while (<STDIN>) {
   chomp;
   if ($_ =~ /\A\s*(\d+)\s+\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*\)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*\Z/) {
     my ($count,$start,$stop,$diff,$weight,$ntx)=($1,$2,$3,$4,$5,$6);
-    $sum += $diff;
+    $sum += $diff*$K*600;
+    $sumq += $diff*$diff*$K*$K*600*600;
     if ($count>=$first && $last != $diff) {
-      print (($start+$stop)*0.5," ",$last*$K," ",$sum*$K*600,"\n") if ($last>0);
-      print (($start+$stop)*0.5," ",$diff*$K," ",$sum*$K*600,"\n");
+      print (($start+$stop)*0.5," ",$last*$K," ",$sum," ",sqrt($sumq),"\n") if ($last>0);
+      print (($start+$stop)*0.5," ",$diff*$K," ",$sum," ",sqrt($sumq),"\n");
+      $last=$diff;
     }
-    $last=$diff;
   }
 }
 
-print time," ",$last*$K," ",$sum*$K*600,"\n";
+print time," ",$last*$K," ",$sum," ",sqrt($sumq),"\n";

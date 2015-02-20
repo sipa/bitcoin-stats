@@ -9,36 +9,36 @@ set format x "%b '%y"
 set key top left
 set title "Bitcoin network: total computations"
 set terminal png large enhanced size 1280,800
-set output "work-ever.png"
+set output "work.png"
 set ytics nomirror tc lt -1
 set logscale y
 set mytics 10
 set grid x y
-plot "diff-ever.dat" using 1:(($3)*1000000000) with line title "work", \
-     "diff-ever.dat" using 1:(($4)*1000000000) with line title "standard deviation"
+plot "diff-50k.dat" using 1:(($3)*1000000000) with line title "work", \
+     "diff-50k.dat" using 1:(($4)*1000000000) with line title "standard deviation"
 
 set terminal png large enhanced size 2560,1440
-set output "work-large-ever.png"
+set output "work-large.png"
 replot
 
 set format x "%m'%y"
 set terminal png small enhanced size 720,480
-set output "work-small-ever.png"
+set output "work-small.png"
 replot
 
 unset logscale y
 unset mytics
 set format x "%b '%y"
 set terminal png large enhanced size 1280,800
-set output "work-lin-ever.png"
+set output "work-lin.png"
 replot
 
 set terminal png large enhanced size 2560,1440
-set output "work-large-lin-ever.png"
+set output "work-large-lin.png"
 replot
 
 
 set format x "%m'%y"
 set terminal png small enhanced size 720,480
-set output "work-small-lin-ever.png"
+set output "work-small-lin.png"
 replot
