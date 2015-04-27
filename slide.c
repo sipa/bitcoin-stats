@@ -30,9 +30,9 @@ int proc(FILE *input, int interval, int pstart) {
     char c[256];
     char *s=fgets(c,256,input);
     if (s) {
-      int num=0,tx=0;
+      int num=0,tx=0,ver=0;
       double start,stop,diff,weight;
-      int ret=sscanf(s," %i (%lg,%lg) %lg %lg %i",&num,&start,&stop,&diff,&weight,&tx);
+      int ret=sscanf(s," %i (%lg,%lg) %lg %lg %i %i",&num,&start,&stop,&diff,&weight,&tx,&ver);
 //      printf("got block %i (diff %g, weight %g, %i tx)\n",num,diff,weight,tx);
       if (ret>=5) {
         if (go) {

@@ -61,9 +61,9 @@ int proc(FILE *input, double tau, double interval,int pstart, double effect, int
   do {
     char *s=fgets(c,256,input);
     if (s) {
-      int num=0,tx=0;
+      int num=0,tx=0,ver=0;
       double start=0.0,stop=0.0,diff=0.0,weight=0.0;
-      int ret=sscanf(s," %i (%lg,%lg) %lg %lg %i",&num,&start,&stop,&diff,&weight,&tx);
+      int ret=sscanf(s," %i (%lg,%lg) %lg %lg %i %i",&num,&start,&stop,&diff,&weight,&tx,&ver);
 //      printf("N=%.17g T=%.17g: got block %i (diff %g, weight %g, %i tx)\n",N,T,num,diff,weight,tx);
       if (ret>=5) {
         while (go && lasttime+interval<start) {

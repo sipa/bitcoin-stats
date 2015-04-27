@@ -9,8 +9,8 @@ my $first=$ARGV[0] || 0;
 
 while (<STDIN>) {
   chomp;
-  if ($_ =~ /\A\s*(\d+)\s+\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*\)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*\Z/) {
-    my ($count,$start,$stop,$diff,$weight,$ntx)=($1,$2,$3,$4,$5,$6);
+  if ($_ =~ /\A\s*(\d+)\s+\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*\)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*\Z/) {
+    my ($count,$start,$stop,$diff,$weight,$ntx,$ver)=($1,$2,$3,$4,$5,$6,$7);
     $sum += $diff*$K*600;
     $sumq += $diff*$diff*$K*$K*600*600;
     if ($count>=$first && $last != $diff) {
