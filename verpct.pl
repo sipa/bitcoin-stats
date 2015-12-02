@@ -2,6 +2,8 @@
 
 use strict;
 
+my $MAXVER = 4;
+
 my @all1001;
 my @all288;
 my @all100;
@@ -41,8 +43,8 @@ while (<STDIN>) {
   chomp;
   if ($_ =~ /\A\s*(\d+)\s+\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*\)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*\Z/) {
     my ($count,$start,$stop,$diff,$weight,$ntx,$ver)=($1,$2,$3,$4,$5,$6,$7);
-    if ($ver > 3) {
-        $ver = 3;
+    if ($ver > $MAXVER) {
+        $ver = $MAXVER;
     }
     $times[$count] = ($start+$stop)*0.5;
     if ($count > 0) {
@@ -61,11 +63,11 @@ for my $count ($first..$#sums) {
     my $sum100 = getsum($count, 100) / 100.0;
     my $sum1000 = getsum($count, 1000);
     $togo = 0;
-    if ($sum1000 < 2000) {
+    if ($sum1000 < ($MAXVER-1) * 1000) {
         $togo = 950;
-    } elsif ($sum1000 < 2950) {
-        $togo = 2950 - $sum1000;
-        while (getsum($count, 1000 - $togo) + $togo * 3 < 2950) {
+    } elsif ($sum1000 < $MAXVER*1000 - 50) {
+        $togo = $MAXVER*1000 - 50 - $sum1000;
+        while (getsum($count, 1000 - $togo) + $togo * $MAXVER < $MAXVER*1000 - 50) {
             $togo++;
         }
     }

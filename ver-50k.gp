@@ -10,6 +10,8 @@ set title "Block version evolution"
 set terminal png large enhanced size 1280,800
 set output "ver-50k.png"
 plot "ver-50k.dat" using 1:2 with line title "Last 1001 blocks", \
+     "ver-50k.dat" using 1:((3951.0/1001)) with line title "BIP65 enforcement", \
+     "ver-50k.dat" using 1:((3751.0/1001)) with line title "BIP65 activation", \
      "ver-50k.dat" using 1:((2951.0/1001)) with line title "BIP66 enforcement", \
      "ver-50k.dat" using 1:((2751.0/1001)) with line title "BIP66 activation"
 
