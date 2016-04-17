@@ -26,6 +26,7 @@ START=2016
 ./slide   500                        $START <dump >slide-500-ever.dat
 ./difflist.pl                        $START <dump >diff-ever.dat
 ./verpct.pl                          $START <dump >ver-ever.dat
+./verpct9.pl                         $START <dump >ver9-ever.dat
 
 START=$(($BLOCKS-50400))
 ./predict 2592000       $((3600*24)) $START <dump >predictM-50k.dat
@@ -37,7 +38,7 @@ START=$(($BLOCKS-50400))
 ./slide   500                        $START <dump >slide-500-50k.dat
 ./slide   200                        $START <dump >slide-200-50k.dat
 ./difflist.pl                        $START <dump >diff-50k.dat
-./verpct.pl                          $START <dump >ver-50k.dat
+./verpct9.pl                         $START <dump >ver9-50k.dat
 
 START=$(($BLOCKS-10080))
 ./predict 2592000       $((3600*24)) $START <dump >predictM-10k.dat
@@ -50,6 +51,7 @@ START=$(($BLOCKS-10080))
 ./slide   200                        $START <dump >slide-200-10k.dat
 ./difflist.pl                        $START <dump >diff-10k.dat
 ./verpct.pl                          $START <dump >ver-10k.dat
+./verpct9.pl                         $START <dump >ver9-10k.dat
 
 START=$(($BLOCKS-2016))
 ./predict 2592000       $((3600*24)) $START <dump >predictM-2k.dat
@@ -62,6 +64,7 @@ START=$(($BLOCKS-2016))
 ./slide   200                        $START <dump >slide-200-2k.dat
 ./difflist.pl                        $START <dump >diff-2k.dat
 ./verpct.pl                          $START <dump >ver-2k.dat
+./verpct9.pl                         $START <dump >ver9-2k.dat
 
 START=$(($BLOCKS-1008))
 ./predict 86400         1200         $START 0.3  <dump >predictD-1k.dat
@@ -92,6 +95,11 @@ gnuplot ver-2k.gp
 gnuplot ver-10k.gp
 gnuplot ver-50k.gp
 gnuplot ver-ever.gp
+
+gnuplot ver9-2k.gp
+gnuplot ver9-10k.gp
+gnuplot ver9-50k.gp
+gnuplot ver9-ever.gp
 
 tail -n 1 predict3D-10k.dat | cut -d ' ' -f 2 >speed-3D.txt
 
