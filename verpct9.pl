@@ -27,7 +27,7 @@ sub getsum {
     } else {
         $firstx = $sums->[$first];
     }
-    return $lastx - $firstx;
+    return ($lastx - $firstx) * 1.0 / $len;
 }
 
 while (<STDIN>) {
@@ -35,7 +35,7 @@ while (<STDIN>) {
   if ($_ =~ /\A\s*(\d+)\s+\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*\)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*([0-9.]+)\s*\Z/) {
     my ($count,$start,$stop,$diff,$weight,$ntx,$ver)=($1,$2,$3,$4,$5,$6,$7);
     my $csv = (($ver & 0xE0000000) == 0x20000000) && (($ver & 1) == 1) && ($start > 1462060800);
-    my $bip9 = (($ver & 0xE0000000) == 0x20000000) && (($ver & 0x1FFFFFFE) == 0);
+    my $bip9 = (($ver & 0xE0000000) == 0x20000000) && (($ver & 0x1FFFFFFF) == 0);
     $times[$count] = ($start+$stop)*0.5;
     if ($count > 0) {
         $sums_csv[$count] = $sums_csv[$count - 1] + $csv;
@@ -48,7 +48,9 @@ while (<STDIN>) {
 }
 
 for my $count ($first..$#times) {
-    my $csv = getsum(\@sums_csv, $count, 2016) / 2016.0;
-    my $bip9 = getsum(\@sums_bip9, $count, 2016) / 2016.0;
-    print $times[$count]," ",$bip9," ",$csv,"\n";
+    my $csv_2016 = getsum(\@sums_csv, $count, 2016);
+    my $bip9_2016 = getsum(\@sums_bip9, $count, 2016);
+    my $csv_144 = getsum(\@sums_csv, $count, 144);
+    my $bip9_144 = getsum(\@sums_bip9, $count, 144);
+    print $times[$count]," ",$bip9_2016," ",$csv_2016," ",$bip9_144," ",$csv_144,"\n";
 }

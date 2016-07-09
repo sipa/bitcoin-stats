@@ -9,7 +9,7 @@ set timefmt "%s"
 #set format x "%b '%y"
 set key top left
 set title "Bitcoin network: total computation speed"
-set terminal png large enhanced size 1280,800
+set terminal pngcairo enhanced size 1280,800 font 'Verdana,10'
 set output "speed-10k.png"
 set yrange [emin/1000 to max/1000]
 set y2range [emin*fact/1000000 to emax*fact/1000000]
@@ -30,12 +30,12 @@ plot "diff-10k.dat" using 1:(($2)/1000) with line title "difficulty", \
      "predictW-10k.dat" using 1:(($2)/1000) with line title "7-day window estimate", \
      "slide-500-10k.dat" using 1:(($2)/1000) with points title "500-block sliding window"
 
-set terminal png large enhanced size 2560,1440
+set terminal pngcairo enhanced size 2560,1440 font 'Verdana,16'
 set output "speed-large-10k.png"
 replot
 
 #set format x "%m'%y"
-set terminal png small enhanced size 720,480
+set terminal pngcairo enhanced size 720,480 font 'Verdana,12'
 set output "speed-small-10k.png"
 replot
 
@@ -50,16 +50,16 @@ set y2tics nomirror tc lt -1
 set yrange [0 to max/1000]
 set y2range [0 to max*fact/1000000]
 #set format x "%b '%y"
-set terminal png large enhanced size 1280,800
+set terminal pngcairo enhanced size 1280,800 font 'Verdana,12'
 set output "speed-lin-10k.png"
 replot
 
-set terminal png large enhanced size 2560,1440
+set terminal pngcairo enhanced size 2560,1440 font 'Verdana,16'
 set output "speed-large-lin-10k.png"
 replot
 
 
 #set format x "%m'%y"
-set terminal png small enhanced size 720,480
+set terminal pngcairo enhanced size 720,480 font 'Verdana,9'
 set output "speed-small-lin-10k.png"
 replot

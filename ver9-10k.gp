@@ -10,8 +10,10 @@ set grid x y
 set title "Block version evolution"
 set terminal png large enhanced size 1280,800
 set output "ver9-10k.png"
-plot "ver9-10k.dat" using 1:($3*100) with line title "BIP68/112/113 adoption", \
-     "ver9-10k.dat" using 1:($2*100) with line title "BIP9 adoption with no bits"
+plot "ver9-10k.dat" using 1:($3*100) with line title "BIP68/112/113 (average over 2016 blocks)", \
+     "ver9-10k.dat" using 1:($2*100) with line title "BIP9 with no bits (average over 2016 blocks)", \
+     "ver9-10k.dat" using 1:($5*100) with line title "BIP68/112/113 (average over 144 blocks)", \
+     "ver9-10k.dat" using 1:($4*100) with line title "BIP9 with no bits (average over 144 blocks)"
 
 set terminal png small enhanced size 2560,1440
 set output "ver9-large-10k.png"
