@@ -76,10 +76,7 @@ gnuplot growth-50k.gp
 gnuplot growth-10k.gp
 gnuplot growth-2k.gp
 
-gnuplot limits.gp speed-ever.gp
-gnuplot limits.gp speed-50k.gp
-gnuplot limits.gp speed-10k.gp
-gnuplot limits.gp speed-2k.gp
+./speed.sh | gnuplot
 
 gnuplot speed-small.gp
 
