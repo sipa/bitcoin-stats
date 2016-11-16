@@ -36,8 +36,8 @@ for WIDTH in 2k 10k 50k ever; do
       echo "emax = 2000000000.0"
       echo "set xdata time"
       echo "set xlabel \"Date\""
-      echo "set ylabel \"Thash/s\""
-      echo "set y2label \"Million difficulty\""
+      echo "set ylabel \"PHash/s\""
+      echo "set y2label \"Billion difficulty\""
       echo "set timefmt \"%s\""
       if [ "d$WIDTH" == "2k" ]; then
         echo "unset format x"
@@ -52,32 +52,32 @@ for WIDTH in 2k 10k 50k ever; do
       echo "set y2tics nomirror tc lt -1"
       echo "set grid x y"
       if [ "d$LOG" == "dlog" ]; then
-        echo "set yrange [min/1000 to emax/1000]"
-        echo "set y2range [min*fact/1000000 to emax*fact/1000000]"
+        echo "set yrange [min/1000000 to emax/1000000]"
+        echo "set y2range [min*fact/1000000000 to emax*fact/1000000000]"
         echo "set logscale y"
         echo "set logscale y2"
       else
-        echo "set yrange [min/1000 to max/1000]"
-        echo "set y2range [min*fact/1000000 to max*fact/1000000]"
+        echo "set yrange [min/1000000 to max/1000000]"
+        echo "set y2range [min*fact/1000000000 to max*fact/1000000000]"
         echo "unset logscale y"
         echo "unset logscale y2"
         echo "unset mytics"
         echo "unset my2tics"
       fi
 
-      echo "plot \"diff-${WIDTH}.dat\" using 1:((\$2)/1000) with line title \"difficulty\", \\"
+      echo "plot \"diff-${WIDTH}.dat\" using 1:((\$2)/1000000) with line title \"difficulty\", \\"
       if [ "d$WIDTH" == "d2k" ]; then
-        echo "     \"predictD-${WIDTH}.dat\" using 1:((\$2)/1000) with line title \"1-day window estimate\", \\"
+        echo "     \"predictD-${WIDTH}.dat\" using 1:((\$2)/1000000) with line title \"1-day window estimate\", \\"
       fi
       if [ "d$WIDTH" == "d2k" -o "d$WIDTH" == "d10k" ]; then
-        echo "     \"predict3D-${WIDTH}.dat\" using 1:((\$2)/1000) with line title \"3-day window estimate\", \\"
+        echo "     \"predict3D-${WIDTH}.dat\" using 1:((\$2)/1000000) with line title \"3-day window estimate\", \\"
       fi
-      echo "     \"predictW-${WIDTH}.dat\" using 1:((\$2)/1000) with line title \"7-day window estimate\", \\"
+      echo "     \"predictW-${WIDTH}.dat\" using 1:((\$2)/1000000) with line title \"7-day window estimate\", \\"
       if [ "d$WIDTH" != "d2k" ]; then
-        echo "     \"predict2W-${WIDTH}.dat\" using 1:((\$2)/1000) with line title \"14-day window estimate\", \\"
+        echo "     \"predict2W-${WIDTH}.dat\" using 1:((\$2)/1000000) with line title \"14-day window estimate\", \\"
       fi
       if [ "d$WIDTH" == "dever" ]; then
-        echo "     \"predictM-${WIDTH}.dat\" using 1:((\$2)/1000) with line title \"30-day window estimate\", \\"
+        echo "     \"predictM-${WIDTH}.dat\" using 1:((\$2)/1000000) with line title \"30-day window estimate\", \\"
       fi
       echo
     done
