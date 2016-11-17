@@ -32,8 +32,8 @@ for WIDTH in 2k 10k 50k ever; do
       fi
       echo "fact = 139.696254564"
       echo "min = $MIN"
-      echo "max = 2000000000.0"
-      echo "emax = 2000000000.0"
+      echo "max = 3000000000.0"
+      echo "emax = 5000000000.0"
       echo "set xdata time"
       echo "set xlabel \"Date\""
       echo "set ylabel \"PHash/s\""
