@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export PERL5LIB=/home/pw/perl5/lib/perl5
+WEBROOT=/var/www/bitcoin.sipa.be
+
 cd /home/pw/bitcoin/stats
 
 if [ -f pidfile ]; then
@@ -72,6 +75,7 @@ START=$(($BLOCKS-1008))
 ./difflist.pl                        $START <dump >diff-1k.dat
 ./verpct.pl                          $START <dump >ver-1k.dat
 
+gnuplot growth-ever.gp
 gnuplot growth-50k.gp
 gnuplot growth-10k.gp
 gnuplot growth-2k.gp
@@ -100,7 +104,7 @@ gnuplot ver9-ever.gp
 
 tail -n 1 predict3D-10k.dat | cut -d ' ' -f 2 >speed-3D.txt
 
-cp *.png *.html *.css *txt /var/www/
-gzip --best <~/git/bitcoin-seeder/dnsseed.dump >/var/www/seeds.txt.gz
+cp *.png *.html *.css *txt $WEBROOT/
+gzip --best <~/git/bitcoin-seeder/dnsseed.dump >$WEBROOT/seeds.txt.gz
 
 rm -f pidfile

@@ -2,16 +2,20 @@
 
 for WIDTH in 2k 10k 50k ever; do
   WIDTHEXT="-ever"
-  MIN="0.001"
+  MIN="0"
+  EMIN="0.001"
   if [ "d$WIDTH" == "d2k" ]; then
     WIDTHEXT="-2k"
     MIN="1000000000.0"
+    EMIN="$MIN"
   elif [ "d$WIDTH" == "d10k" ]; then
     WIDTHEXT="-10k"
     MIN="1000000000.0"
+    EMIN="$MIN"
   elif [ "d$WIDTH" == "d50k" ]; then
     WIDTHEXT=""
     MIN="100000000.0"
+    EMIN="$MIN"
   fi
   for SIZE in small medium large; do
     SIZEEXT=""
@@ -32,8 +36,9 @@ for WIDTH in 2k 10k 50k ever; do
       fi
       echo "fact = 139.696254564"
       echo "min = $MIN"
-      echo "max = 3000000000.0"
-      echo "emax = 5000000000.0"
+      echo "emin = $EMIN"
+      echo "max = 6000000000.0"
+      echo "emax = 10000000000.0"
       echo "set xdata time"
       echo "set xlabel \"Date\""
       echo "set ylabel \"PHash/s\""
@@ -52,8 +57,8 @@ for WIDTH in 2k 10k 50k ever; do
       echo "set y2tics nomirror tc lt -1"
       echo "set grid x y"
       if [ "d$LOG" == "dlog" ]; then
-        echo "set yrange [min/1000000 to emax/1000000]"
-        echo "set y2range [min*fact/1000000000 to emax*fact/1000000000]"
+        echo "set yrange [emin/1000000 to emax/1000000]"
+        echo "set y2range [emin*fact/1000000000 to emax*fact/1000000000]"
         echo "set logscale y"
         echo "set logscale y2"
       else
