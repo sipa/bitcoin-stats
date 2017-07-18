@@ -48,6 +48,7 @@ while (<STDIN>) {
         $sums_bip9[$count] = $sums_bip9[$count - 1] + $bip9;
     } else {
         $sums_segwit[$count] = $segwit;
+        $sums_bip91[$count] = $bip91;
         $sums_csv[$count] = $csv;
         $sums_bip9[$count] = $bip9;
     }
