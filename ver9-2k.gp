@@ -14,7 +14,7 @@ plot "ver9-2k.dat" using 1:($4*100) with line title "SegWit (average over 2016 b
      "ver9-2k.dat" using 1:($3*100) with line title "CSV (average over 2016 blocks)", \
      "ver9-2k.dat" using 1:($8*100) with line title "BIP91 (average over 336 blocks)", \
      "ver9-2k.dat" using 1:($7*100) with line title "SegWit (average over 144 blocks)", \
-     "ver9-2k.dat" using 1:($6*100) with line title "CSV (average over 144 blocks)"
+     "ver9-2k.dat" using 1:($6*100) with line title "CSV (average over 144 blocks)", \
      "ver9-2k.dat" using 1:($8*100) with line title "BIP91 (average over 144 blocks)"
 
 set terminal png small enhanced size 2560,1440

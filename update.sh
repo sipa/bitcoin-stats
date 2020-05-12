@@ -1,9 +1,10 @@
 #!/bin/bash
 
-export PERL5LIB=/home/pw/perl5/lib/perl5
+export PERL_MB_OPT="--install_base /home/pw/perl5"
+export PERL_MM_OPT=INSTALL_BASE=/home/pw/perl5
 WEBROOT=/var/www/bitcoin.sipa.be
 
-cd /home/pw/bitcoin/stats
+cd /home/site/stats
 
 if [ -f pidfile ]; then
   exit

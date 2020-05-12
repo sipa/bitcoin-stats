@@ -25,8 +25,8 @@ sub loadDb {
         open FILE,"<$db";
         while (<FILE>) {
             chomp;
-            my ($id,$hash,$ts,$diff,$tx,$version,$size) = split(/ /,$_);
-            $data[$id]=[$hash,$ts,$diff,$tx,$version,$size];
+            my ($id,$hash,$ts,$diff,$tx,$version,$size,$strippedsize) = split(/ /,$_);
+            $data[$id]=[$hash,$ts,$diff,$tx,$version,$size,$strippedsize];
         }
         close FILE;
     }
@@ -62,8 +62,14 @@ sub update {
     while($blkhash) {
         last if (defined $data[$blkcount] && $data[$blkcount]->[0] eq $blkhash);
         my $blk = fetch("getblock", $blkhash);
-        $data[$blkcount] = [$blkhash, $blk->{time}, $blk->{difficulty}, $#{$blk->{tx}}+1, $blk->{version}, $blk->{size}];
-        print "Update #$blkcount: hash=$blkhash time=$blk->{time} diff=$blk->{difficulty} tx=",($#{$blk->{tx}}+1)," ver=$blk->{version} size=$blk->{size}\n";
+        my $strippedsize;
+        if (exists $blk->{strippedsize}) {
+            $strippedsize = $blk->{strippedsize};
+        } else {
+            $strippedsize = $blk->{size};
+        }
+        $data[$blkcount] = [$blkhash, $blk->{time}, $blk->{difficulty}, $#{$blk->{tx}}+1, $blk->{version}, $blk->{size}, $strippedsize];
+        print "Update #$blkcount: hash=$blkhash time=$blk->{time} diff=$blk->{difficulty} tx=",($#{$blk->{tx}}+1)," ver=$blk->{version} size=$blk->{size} strippedsize=$strippedsize\n";
         $updated++;
         $blkcount--;
         $blkhash = $blk->{previousblockhash};
@@ -80,7 +86,7 @@ sub dumper {
     rename "${file}.new","${file}";
     open FILE,">${db}.new";
     for my $i (0..$#data) {
-        print FILE "$i $data[$i]->[0] $data[$i]->[1] $data[$i]->[2] $data[$i]->[3] $data[$i]->[4] $data[$i]->[5]\n";
+        print FILE "$i $data[$i]->[0] $data[$i]->[1] $data[$i]->[2] $data[$i]->[3] $data[$i]->[4] $data[$i]->[5] $data[$i]->[6]\n";
     }
     close FILE;
     rename "${db}.new","${db}";
