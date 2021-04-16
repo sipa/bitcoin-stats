@@ -6,15 +6,15 @@ for WIDTH in 2k 10k 50k ever; do
   EMIN="0.001"
   if [ "d$WIDTH" == "d2k" ]; then
     WIDTHEXT="-2k"
-    MIN="1000000000.0"
+    MIN="100000000000.0"
     EMIN="$MIN"
   elif [ "d$WIDTH" == "d10k" ]; then
     WIDTHEXT="-10k"
-    MIN="1000000000.0"
+    MIN="100000000000.0"
     EMIN="$MIN"
   elif [ "d$WIDTH" == "d50k" ]; then
     WIDTHEXT=""
-    MIN="100000000.0"
+    MIN="50000000000.0"
     EMIN="$MIN"
   fi
   for SIZE in small medium large; do
@@ -37,8 +37,8 @@ for WIDTH in 2k 10k 50k ever; do
       echo "fact = 139.696254564"
       echo "min = $MIN"
       echo "emin = $EMIN"
-      echo "max = 150000000000.0"
-      echo "emax = 200000000000.0"
+      echo "max = 250000000000.0"
+      echo "emax = 250000000000.0"
       echo "set xdata time"
       echo "set xlabel \"Date\""
       echo "set ylabel \"PHash/s\""
